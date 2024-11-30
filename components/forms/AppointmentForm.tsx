@@ -22,7 +22,7 @@ import CustomFormField, { FormFieldType } from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { Form } from "../ui/form";
 
-export const AppointmentForm = ({
+const AppointmentForm = ({
   userId,
   patientId,
   type = "create",
@@ -143,7 +143,7 @@ export const AppointmentForm = ({
         {type !== "cancel" && (
           <>
             <CustomFormField
-              fieldType={FormFieldType.SELECT}
+              fieldType={FormFieldType.Select}
               control={form.control}
               name="primaryPhysician"
               label="Doctor"
@@ -166,7 +166,7 @@ export const AppointmentForm = ({
             </CustomFormField>
 
             <CustomFormField
-              fieldType={FormFieldType.DATE_PICKER}
+              fieldType={FormFieldType.DatePicker}
               control={form.control}
               name="schedule"
               label="Expected appointment date"
@@ -178,7 +178,7 @@ export const AppointmentForm = ({
               className={`flex flex-col gap-6  ${type === "create" && "xl:flex-row"}`}
             >
               <CustomFormField
-                fieldType={FormFieldType.TEXTAREA}
+                fieldType={FormFieldType.Textarea}
                 control={form.control}
                 name="reason"
                 label="Appointment reason"
@@ -187,7 +187,7 @@ export const AppointmentForm = ({
               />
 
               <CustomFormField
-                fieldType={FormFieldType.TEXTAREA}
+                fieldType={FormFieldType.Textarea}
                 control={form.control}
                 name="note"
                 label="Comments/notes"
@@ -200,7 +200,7 @@ export const AppointmentForm = ({
 
         {type === "cancel" && (
           <CustomFormField
-            fieldType={FormFieldType.TEXTAREA}
+            fieldType={FormFieldType.Textarea}
             control={form.control}
             name="cancellationReason"
             label="Reason for cancellation"
@@ -218,3 +218,5 @@ export const AppointmentForm = ({
     </Form>
   );
 };
+
+export default AppointmentForm;
