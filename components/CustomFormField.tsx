@@ -18,13 +18,13 @@ import { Select, SelectContent, SelectTrigger, SelectValue } from "./ui/select";
 import { Textarea } from "./ui/textarea";
 
 export enum FormFieldType {
-  INPUT = "input",
-  TEXTAREA = "textarea",
-  PHONE_INPUT = "phoneInput",
-  CHECKBOX = "checkbox",
-  DATE_PICKER = "datePicker",
-  SELECT = "select",
-  SKELETON = "skeleton",
+  Input = "input",
+  Textarea = "textarea",
+  PhoneInput = "PhoneInput",
+  Checkbox = "checkbox",
+  DatePicker = "datePicker",
+  Select = "select",
+  Skeleton = "skeleton",
 }
 
 interface CustomProps {
@@ -44,7 +44,7 @@ interface CustomProps {
 
 const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
   switch (props.fieldType) {
-    case FormFieldType.INPUT:
+    case FormFieldType.Input:
       return (
         <div className="flex rounded-md border border-dark-500 bg-dark-400">
           {props.iconSrc && (
@@ -65,7 +65,7 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
           </FormControl>
         </div>
       );
-    case FormFieldType.TEXTAREA:
+    case FormFieldType.Textarea:
       return (
         <FormControl>
           <Textarea
@@ -76,7 +76,7 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
           />
         </FormControl>
       );
-    case FormFieldType.PHONE_INPUT:
+    case FormFieldType.PhoneInput:
       return (
         <FormControl>
           <PhoneInput
@@ -90,7 +90,7 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
           />
         </FormControl>
       );
-    case FormFieldType.CHECKBOX:
+    case FormFieldType.Checkbox:
       return (
         <FormControl>
           <div className="flex items-center gap-4">
@@ -105,7 +105,7 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
           </div>
         </FormControl>
       );
-    case FormFieldType.DATE_PICKER:
+    case FormFieldType.DatePicker:
       return (
         <div className="flex rounded-md border border-dark-500 bg-dark-400">
           <Image
@@ -119,7 +119,7 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
             <ReactDatePicker
               showTimeSelect={props.showTimeSelect ?? false}
               selected={field.value}
-              onChange={(date: Date) => field.onChange(date)}
+              onChange={(date: Date | null) => field.onChange(date)}
               timeInputLabel="Time:"
               dateFormat={props.dateFormat ?? "MM/dd/yyyy"}
               wrapperClassName="date-picker"
@@ -127,7 +127,7 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
           </FormControl>
         </div>
       );
-    case FormFieldType.SELECT:
+    case FormFieldType.Select:
       return (
         <FormControl>
           <Select onValueChange={field.onChange} defaultValue={field.value}>
@@ -142,7 +142,7 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
           </Select>
         </FormControl>
       );
-    case FormFieldType.SKELETON:
+    case FormFieldType.Skeleton:
       return props.renderSkeleton ? props.renderSkeleton(field) : null;
     default:
       return null;
@@ -158,7 +158,7 @@ const CustomFormField = (props: CustomProps) => {
       name={name}
       render={({ field }) => (
         <FormItem className="flex-1">
-          {props.fieldType !== FormFieldType.CHECKBOX && label && (
+          {props.fieldType !== FormFieldType.Checkbox && label && (
             <FormLabel className="shad-input-label">{label}</FormLabel>
           )}
           <RenderInput field={field} props={props} />
