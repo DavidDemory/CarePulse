@@ -22,7 +22,7 @@ import CustomFormField, { FormFieldType } from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { Form } from "../ui/form";
 
-const AppointmentForm = ({
+export const AppointmentForm = ({
   userId,
   patientId,
   type = "create",
@@ -143,7 +143,7 @@ const AppointmentForm = ({
         {type !== "cancel" && (
           <>
             <CustomFormField
-              fieldType={FormFieldType.Select}
+              fieldType={FormFieldType.SELECT}
               control={form.control}
               name="primaryPhysician"
               label="Doctor"
@@ -166,7 +166,7 @@ const AppointmentForm = ({
             </CustomFormField>
 
             <CustomFormField
-              fieldType={FormFieldType.DatePicker}
+              fieldType={FormFieldType.DATE_PICKER}
               control={form.control}
               name="schedule"
               label="Expected appointment date"
@@ -178,7 +178,7 @@ const AppointmentForm = ({
               className={`flex flex-col gap-6  ${type === "create" && "xl:flex-row"}`}
             >
               <CustomFormField
-                fieldType={FormFieldType.Textarea}
+                fieldType={FormFieldType.TEXTAREA}
                 control={form.control}
                 name="reason"
                 label="Appointment reason"
@@ -187,7 +187,7 @@ const AppointmentForm = ({
               />
 
               <CustomFormField
-                fieldType={FormFieldType.Textarea}
+                fieldType={FormFieldType.TEXTAREA}
                 control={form.control}
                 name="note"
                 label="Comments/notes"
@@ -200,7 +200,7 @@ const AppointmentForm = ({
 
         {type === "cancel" && (
           <CustomFormField
-            fieldType={FormFieldType.Textarea}
+            fieldType={FormFieldType.TEXTAREA}
             control={form.control}
             name="cancellationReason"
             label="Reason for cancellation"
@@ -218,5 +218,3 @@ const AppointmentForm = ({
     </Form>
   );
 };
-
-export default AppointmentForm;

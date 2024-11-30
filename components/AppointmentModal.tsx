@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Appointment } from "@/types/appwrite.types";
-import AppointmentForm from "@/components/forms/AppointmentForm";
+import { AppointmentForm } from "@/components/forms/AppointmentForm";
 
 const AppointmentModal = ({
   type,
